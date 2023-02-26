@@ -36,3 +36,19 @@ def test_bst_insert_right(bst):
     assert bst.root.right.data['id'] == 50
 
 
+def test_bst_insert_left_left(bst):
+    """Insert data two times to require recursion."""
+    bst.insert({'id': 30})
+    bst.insert({'id': 25})
+    assert bst.root.data['id'] == 40
+    assert bst.root.left.data['id'] == 30
+    assert bst.root.left.left.data['id'] == 25
+
+
+def test_bst_insert_right_right(bst):
+    """Insert data two times to require recursion."""
+    bst.insert({'id': 50})
+    bst.insert({'id': 60})
+    assert bst.root.data['id'] == 40
+    assert bst.root.right.data['id'] == 50
+    assert bst.root.right.right.data['id'] == 60
