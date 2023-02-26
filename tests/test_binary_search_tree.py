@@ -52,3 +52,21 @@ def test_bst_insert_right_right(bst):
     assert bst.root.data['id'] == 40
     assert bst.root.right.data['id'] == 50
     assert bst.root.right.right.data['id'] == 60
+
+
+def test_bst_get_data_for_empty_bst():
+    bst = BinarySearchTree()
+    assert bst.get_data_by_id(40) == {}
+
+
+@pytest.mark.parametrize('data_id, data', [(40, {'id': 40}),
+                                           (30, {'id': 30}),
+                                           (25, {'id': 25}),
+                                           (35, {'id': 35}),
+                                           (50, {'id': 50}),
+                                           (60, {'id': 60}),
+                                           (45, {'id': 45}),
+                                           (999, {}),
+                                           ])
+def test_bst_get_data_by_id(bst_full, data_id, data):
+    assert bst_full.get_data_by_id(data_id) == data

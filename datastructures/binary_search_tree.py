@@ -40,3 +40,23 @@ class BinarySearchTree:
                 node.right = Node(data)
             else:
                 self._insert_recursive(data, node.right)
+
+    def get_data_by_id(self, data_id: int) -> dict:
+        """Return dictionary with data where id key equal to data_id."""
+        if self.__root is None:
+            return {}
+        else:
+            return self._get_data_by_id_recursive(data_id, self.__root)
+
+    def _get_data_by_id_recursive(self, data_id: int, node: Node) -> dict:
+        """Search recursively and return data by id key."""
+        if data_id == node.data['id']:
+            return node.data
+
+        if data_id < node.data['id'] and node.left is not None:
+            return self._get_data_by_id_recursive(data_id, node.left)
+
+        if data_id > node.data['id'] and node.right is not None:
+            return self._get_data_by_id_recursive(data_id, node.right)
+
+        return {}
