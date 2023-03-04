@@ -1,5 +1,6 @@
 import pytest
 from datastructures.binary_search_tree import BinarySearchTree
+from datastructures.linkedlist import LinkedList
 
 
 @pytest.fixture
@@ -25,3 +26,13 @@ def bst_full():
     bst.insert({'id': 60})
     bst.insert({'id': 45})
     return bst
+
+
+@pytest.fixture
+def ll_123():
+    """LinkedList with 3 nodes."""
+    ll = LinkedList()
+    ll.insert(1)
+    ll.insert(2)
+    ll.insert(3)
+    return ll
